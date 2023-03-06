@@ -12,22 +12,27 @@
         android:theme="@style/Theme.DesenvolvimentoParaAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashS"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar" />
-
-        <activity
-            android:name=".SplashScreen"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar">
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar" />
+        <activity
+            android:name=".Activity2"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar"/>
     </application>
 
 </manifest>

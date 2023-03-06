@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import dev.cpelegrin.devandroid.databinding.ActivityMainBinding
 
-class SplashScreen : AppCompatActivity() {
+class Activity2 : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
