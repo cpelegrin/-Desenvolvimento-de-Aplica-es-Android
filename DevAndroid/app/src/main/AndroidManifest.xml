@@ -12,11 +12,17 @@
         android:theme="@style/Theme.DesenvolvimentoParaAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".Activity3"
+            android:exported="false"
+            android:label="@string/title_activity_3"
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar" />
+        <activity
             android:name=".SplashS"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.DesenvolvimentoParaAndroid.Fullscreen">
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.Fullscreen"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +38,7 @@
             android:name=".Activity2"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar"/>
+            android:theme="@style/Theme.DesenvolvimentoParaAndroid.NoActionBar" />
     </application>
 
 </manifest>

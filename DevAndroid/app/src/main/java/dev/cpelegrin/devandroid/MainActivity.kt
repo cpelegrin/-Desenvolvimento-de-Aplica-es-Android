@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        val extraData = intent.getStringExtra("chave")
+        binding.conteudo.texto.setText("Conteúdo enviado: " + extraData )
 
         Log.i("Nome da Activity", "onCreate")
     }

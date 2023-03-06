@@ -1,5 +1,8 @@
 package dev.cpelegrin.devandroid
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
@@ -7,12 +10,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import dev.cpelegrin.devandroid.databinding.ActivityMainBinding
 
 class Activity2 : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    val forResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK)
+            Log.e("Activity2", "Dados: " + result.data?.getStringExtra("toPast"));
+         else
+            Toast.makeText(applicationContext, "Usuário pressionou o botão voltar no android", Toast.LENGTH_LONG).show()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +34,13 @@ class Activity2 : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(applicationContext, Activity3::class.java)
+            forResult.launch(intent);
         }
+        val extraData = intent.getStringExtra("key")
+        binding.conteudo.texto.setText("Conteúdo enviado: " + extraData )
 
-        Log.i("Activity2", "onCreate")
+        Log.e("Activity2", "onCreate")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,7 +54,12 @@ class Activity2 : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.putExtra("chave", "Valor no menu")
+                startActivity(intent);
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -53,17 +71,17 @@ class Activity2 : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.wtf("Activity2", "onResume")
+        Log.e("Activity2", "onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.v("Activity2", "onPause")
+        Log.e("Activity2", "onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.w("Activity2", "onStop")
+        Log.e("Activity2", "onStop")
     }
 
     override fun onRestart() {
@@ -73,6 +91,6 @@ class Activity2 : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("Activity2", "onDestroy")
+        Log.e("Activity2", "onDestroy")
     }
 }

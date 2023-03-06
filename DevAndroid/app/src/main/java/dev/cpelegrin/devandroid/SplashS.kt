@@ -2,16 +2,15 @@ package dev.cpelegrin.devandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
-import android.os.Build
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.content.Intent
+import android.os.*
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowInsets
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import dev.cpelegrin.devandroid.databinding.ActivitySplashSBinding
 
 /**
@@ -59,8 +58,17 @@ class SplashS : AppCompatActivity() {
         // Set up the user interaction to manually show or hide the system UI.
         fullscreenContent = binding.fullscreenContent
 
-
-
+        Handler(Looper.myLooper()!!).postDelayed(Runnable {
+            Toast.makeText(applicationContext, "Aguarde mais 1 segundos", Toast.LENGTH_LONG).show()
+            changeScreenHandler.sendEmptyMessageDelayed(0, 1000);
+        }, 1000)
+    }
+    val changeScreenHandler = object : Handler(Looper.myLooper()!!){
+        override fun handleMessage(msg: Message){
+            val intent = Intent(applicationContext, Activity2::class.java)
+            intent.putExtra("key", "value")
+            startActivity(intent);
+        }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
