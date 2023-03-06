@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import dev.cpelegrin.devandroid.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class SplashScreen : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        Log.i("Nome da Activity", "onCreate")
+        Log.i("Activity2", "onCreate")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -48,31 +48,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.e("Nome da Activity", "onStart");
+        Log.e("Activity2", "onStart");
     }
 
     override fun onResume() {
         super.onResume()
-        Log.wtf("Nome da Activity", "onResume")
+        Log.wtf("Activity2", "onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.v("Nome da Activity", "onPause")
+        Log.v("Activity2", "onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.w("Nome da Activity", "onStop")
+        Log.w("Activity2", "onStop")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.e("Nome da Activity", "onRestart")
+        Log.e("Activity2", "onRestart")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("Nome da Activity", "onDestroy")
+        Log.d("Activity2", "onDestroy")
     }
 }
